@@ -6,12 +6,11 @@
           Register Here <mat-icon>how_to_reg</mat-icon>
         </h1>
 
-        <form (ngSubmit)="registerUser()">
+        <form [formGroup]="userForm">
           <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Username *</mat-label>
+            <mat-label>Username</mat-label>
             <input
-              [(ngModel)]="user.username"
-              name="username"
+              formControlName="username"
               type="text"
               matInput
               placeholder="Enter username"
@@ -19,10 +18,9 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Password *</mat-label>
+            <mat-label>Password</mat-label>
             <input
-              [(ngModel)]="user.password"
-              name="password"
+              formControlName="password"
               type="password"
               matInput
               placeholder="Enter password"
@@ -30,10 +28,9 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-100">
-            <mat-label>First Name *</mat-label>
+            <mat-label>First Name</mat-label>
             <input
-              [(ngModel)]="user.firstName"
-              name="firstName"
+              formControlName="firstName"
               type="text"
               matInput
               placeholder="Enter first name"
@@ -43,8 +40,7 @@
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Last Name *</mat-label>
             <input
-              [(ngModel)]="user.lastName"
-              name="lastName"
+              formControlName="lastName"
               type="text"
               matInput
               placeholder="Enter last name"
@@ -52,10 +48,9 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Email *</mat-label>
+            <mat-label>Email</mat-label>
             <input
-              [(ngModel)]="user.email"
-              name="email"
+              formControlName="email"
               type="email"
               matInput
               placeholder="Enter email address"
@@ -65,19 +60,26 @@
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Phone Number</mat-label>
             <input
-              [(ngModel)]="user.phone"
-              name="phone"
+              formControlName="phone"
               type="text"
               matInput
               placeholder="Enter phone number"
+              onkeypress="if ( isNaN( String.fromCharCode(event.keyCode) )) return false;"
+              maxlength="10"
             />
           </mat-form-field>
 
           <div class="container text-center">
-            <button type="submit" mat-raised-button color="primary">
+            <button
+              (click)="registerUser(userForm.value)"
+              mat-raised-button
+              color="primary"
+            >
               Register
             </button>
-            <button mat-raised-button color="accent" class="ms-3">Reset</button>
+            <button type="reset" mat-raised-button color="accent" class="ms-3">
+              Reset
+            </button>
           </div>
         </form>
       </div>
