@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -56,13 +57,24 @@ export class SignupComponent implements OnInit {
   registerUser(user: any) {
     this.submitted = true;
     if (this.userForm.valid) {
-      user.profile = 'default.png';
       this.userService.addNewUser(user).subscribe(
         (response: any) => {
-          this.router.navigate(['/']);
+          Swal.fire(
+            'Success',
+            'User <b>' +
+              response.username +
+              '</b> registered successfully!!!<br/><i>Redirecting to home page</i>.',
+            'success'
+          ).then(() => {
+            this.router.navigate(['/']);
+          });
         },
         (error) => {
-          console.log('Error : ', error);
+          Swal.fire(
+            'Error !!!',
+            'Something went wrong. Try again !!!',
+            'error'
+          );
         }
       );
     }
