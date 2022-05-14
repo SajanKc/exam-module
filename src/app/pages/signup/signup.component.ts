@@ -18,8 +18,6 @@ import Swal from 'sweetalert2';
 export class SignupComponent implements OnInit {
   userForm: FormGroup = new FormGroup({});
 
-  submitted: Boolean = false;
-
   // used in form
   user: User = new User();
 
@@ -55,7 +53,6 @@ export class SignupComponent implements OnInit {
   }
 
   registerUser(user: any) {
-    this.submitted = true;
     if (this.userForm.valid) {
       this.userService.addNewUser(user).subscribe(
         (response: any) => {
