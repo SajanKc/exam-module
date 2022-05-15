@@ -39,7 +39,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Last Name *</mat-label>
+            <mat-label>Last Name</mat-label>
             <input
               formControlName="lastName"
               type="text"
@@ -47,6 +47,15 @@
               placeholder="Enter last name"
             />
           </mat-form-field>
+
+          <div class="mb-3">
+            <mat-radio-group formControlName="gender">
+              <mat-radio-button class="me-3" [value]="'male'" checked="checked">
+                Male
+              </mat-radio-button>
+              <mat-radio-button [value]="'female'"> Female </mat-radio-button>
+            </mat-radio-group>
+          </div>
 
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Email</mat-label>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/model/user.model';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -7,22 +8,11 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  user = {
-    id: '',
-    username: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    profile: '',
-    enabled: '',
-    authorities: [{ authority: '' }],
-  };
+  user = new User();
 
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.user = this.loginService.getUser();
-    console.log('USER: ', this.user);
   }
 }
