@@ -1,1 +1,41 @@
-<p>profile works!</p>
+<mat-card *ngIf="user">
+  <h2>Profile Details</h2>
+  <mat-card-content>
+    <mat-card>
+      <img
+        src="assets/images/male-default.png"
+        alt=""
+        class="p-1 profile-image"
+      />
+      <table class="table table-hover">
+        <tbody>
+          <tr *ngIf="user.firstName">
+            <th>Name :</th>
+            <td>{{ user.firstName }} {{ user.lastName }}</td>
+          </tr>
+          <tr *ngIf="user.email">
+            <th>Email :</th>
+            <td>{{ user.email }}</td>
+          </tr>
+          <tr *ngIf="user.phone">
+            <th>Phone :</th>
+            <td>{{ user.phone }}</td>
+          </tr>
+          <tr>
+            <th>Role :</th>
+            <td>{{ user.authorities[0].authority }}</td>
+          </tr>
+          <tr>
+            <th>Status :</th>
+            <td>{{ user.enabled ? "ACTIVE" : "NOT_ACTIVE" }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary">Update</button>
+        <button mat-raised-button color="accent">SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

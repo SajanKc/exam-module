@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="navbar navbar-lignt sticky-top shadow" color="accent">
   <button mat-icon-button>
     <mat-icon>menu_book</mat-icon>
     <span>Exam Portal</span>
@@ -22,7 +22,13 @@
       <mat-icon>how_to_reg</mat-icon>
     </button>
 
-    <button class="w-auto" *ngIf="isLoggedIn" mat-icon-button>
+    <button
+      *ngIf="isLoggedIn"
+      class="w-auto"
+      mat-icon-button
+      matTooltip="Profile Details"
+      routerLink="/admin-dashboard/profile"
+    >
       {{ currentUser }}
       <mat-icon>person_outline</mat-icon>
     </button>
