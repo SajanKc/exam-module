@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,6 +9,8 @@ import { environment } from 'src/environments/environment';
 export class LoginService {
   apiUrlEndPoint: string = '/generate-token';
   baseUrl: string = environment.baseUrl;
+
+  public loginStatusSubject = new Subject<boolean>();
 
   constructor(private http: HttpClient) {}
 
@@ -41,6 +44,7 @@ export class LoginService {
   public logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    location.reload();
     return true;
   }
 

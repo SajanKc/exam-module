@@ -40,11 +40,12 @@ export class LoginComponent implements OnInit {
 
           this.loginService.getCurrentUser().subscribe((user: any) => {
             this.loginService.setUser(user);
-            console.log('User', user);
             if (this.loginService.getUserRole() == 'ADMIN') {
               this.router.navigateByUrl('/admin-dashboard');
+              this.loginService.loginStatusSubject.next(true);
             } else if (this.loginService.getUserRole()) {
               this.router.navigateByUrl('/user-dashboard');
+              this.loginService.loginStatusSubject.next(true);
             } else {
               this.loginService.logout();
             }
