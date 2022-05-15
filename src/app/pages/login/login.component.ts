@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,10 @@ import {
 export class LoginComponent implements OnInit {
   userLoginForm: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
@@ -25,7 +29,26 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser(userData: any) {
-    console.log('Login data: ', userData);
+    if (this.userLoginForm.valid) {
+      this.loginService.generateToken(userData).subscribe(
+        (data: any) => {
+          console.log('Token ', data);
+
+          // Login...
+          this.loginService.loginUser(data.token);
+
+          this.loginService.getCurrentUser().subscribe((user: any) => {
+            this.loginService.setUser(user);
+            console.log('User', user);
+            // redirect ... ADMIN: admin-dashboard
+            //redirect ... NORMAL: user-dashboard
+          });
+        },
+        (error) => {
+          console.log('Error: ', error);
+        }
+      );
+    }
   }
 
   initForm() {
