@@ -5,7 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,20 +35,24 @@ export class LoginComponent implements OnInit {
     if (this.userLoginForm.valid) {
       this.loginService.generateToken(userData).subscribe(
         (data: any) => {
-          console.log('Token ', data);
-
           // Login...
           this.loginService.loginUser(data.token);
 
           this.loginService.getCurrentUser().subscribe((user: any) => {
             this.loginService.setUser(user);
             console.log('User', user);
-            // redirect ... ADMIN: admin-dashboard
-            //redirect ... NORMAL: user-dashboard
+            if (this.loginService.getUserRole() == 'ADMIN') {
+              this.router.navigateByUrl('/admin-dashboard');
+            } else if (this.loginService.getUserRole()) {
+              this.router.navigateByUrl('/user-dashboard');
+            } else {
+              this.loginService.logout();
+            }
           });
         },
         (error) => {
           console.log('Error: ', error);
+          Swal.fire('Invalid Details', 'Something went wrong !!!', 'error');
         }
       );
     }
