@@ -14,6 +14,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -29,6 +31,8 @@ import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoryComponent } from './pages/admin/view-category/view-category.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ViewQuizComponent } from './pages/admin/view-quiz/view-quiz.component';
+import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,8 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
     WelcomeComponent,
     ViewCategoryComponent,
     AddCategoryComponent,
+    ViewQuizComponent,
+    AddQuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +69,8 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
     MatListModule,
     MatRadioModule,
     MatSnackBarModule,
+    MatSlideToggleModule,
+    MatSelectModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

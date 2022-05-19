@@ -1,0 +1,8 @@
+.header-image {
+  background-image: url("../../../../assets/images/quiz.png");
+  background-size: contain;
+}
+.btn-group > button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
