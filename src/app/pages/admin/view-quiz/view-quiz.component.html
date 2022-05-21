@@ -33,6 +33,9 @@
         <button mat-stroked-button color="accent">
           Questions: {{ quiz.numberOfQuestions }}
         </button>
+        <button mat-stroked-button color="warn" (click)="deleteQuiz(quiz.qid)">
+          Delete
+        </button>
       </mat-card-actions>
     </mat-card>
   </mat-card-content>
