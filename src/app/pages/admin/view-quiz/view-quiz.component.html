@@ -25,7 +25,13 @@
       </mat-card-content>
       <mat-card-actions class="btn-group">
         <button mat-raised-button color="accent">Questions</button>
-        <button mat-raised-button color="accent">Update</button>
+        <button
+          mat-raised-button
+          color="accent"
+          [routerLink]="'/admin-dashboard/update-quiz/' + quiz.qid"
+        >
+          Update
+        </button>
         <button mat-raised-button color="accent">Attempts</button>
         <button mat-stroked-button color="accent">
           Max Marks: {{ quiz.maxMarks }}
@@ -34,7 +40,9 @@
           Questions: {{ quiz.numberOfQuestions }}
         </button>
         <button mat-stroked-button color="warn" (click)="deleteQuiz(quiz.qid)">
-          Delete
+          <mat-icon class="me-1" fontSet="material-icons-outlined">
+            delete_forever
+          </mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>
