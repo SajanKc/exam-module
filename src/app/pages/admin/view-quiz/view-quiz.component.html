@@ -24,7 +24,15 @@
         <p>{{ quiz.description }}</p>
       </mat-card-content>
       <mat-card-actions class="btn-group">
-        <button mat-raised-button color="accent">Questions</button>
+        <button
+          mat-raised-button
+          color="accent"
+          [routerLink]="
+            '/admin-dashboard/view-questions/' + quiz.qid + '/' + quiz.title
+          "
+        >
+          Questions
+        </button>
         <button
           mat-raised-button
           color="accent"
