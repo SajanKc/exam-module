@@ -28,7 +28,7 @@
           mat-raised-button
           color="accent"
           [routerLink]="
-            '/admin-dashboard/view-questions/' + quiz.qid + '/' + quiz.title
+            '/admin-dashboard/view-questions/' + quiz.quizId + '/' + quiz.title
           "
         >
           Questions
@@ -36,7 +36,7 @@
         <button
           mat-raised-button
           color="accent"
-          [routerLink]="'/admin-dashboard/update-quiz/' + quiz.qid"
+          [routerLink]="'/admin-dashboard/update-quiz/' + quiz.quizId"
         >
           Update
         </button>

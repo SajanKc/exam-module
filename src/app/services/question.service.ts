@@ -18,4 +18,11 @@ export class QuestionService {
       this.baseUrl + this.apiUrlEndPoint + '/quiz/all/' + qid
     );
   }
+
+  public addQuestionOfQuiz(question: any): Observable<any> {
+    return this.httpClient.post<any>(
+      this.baseUrl + this.apiUrlEndPoint,
+      question
+    );
+  }
 }

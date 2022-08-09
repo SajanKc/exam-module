@@ -9,5 +9,5 @@ export class Question {
   option3: string | undefined;
   option4: string | undefined;
   answer: string | undefined;
-  quiz: Array<Quiz> = [];
+  // quiz: Quiz;
 }

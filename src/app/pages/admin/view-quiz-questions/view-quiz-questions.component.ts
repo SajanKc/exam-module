@@ -20,13 +20,12 @@ export class ViewQuizQuestionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.qId = this.activatedRoute.snapshot.params['qid'];
+    this.qId = this.activatedRoute.snapshot.params['qId'];
     this.qTitle = this.activatedRoute.snapshot.params['title'];
 
     this.questionService.getQuestionsOfQuiz(this.qId).subscribe(
       (data) => {
         this.questions = data;
-        console.log(data);
       },
       (error) => console.log(error)
     );
