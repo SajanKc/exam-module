@@ -25,4 +25,10 @@ export class QuestionService {
       question
     );
   }
+
+  public deleteQuestion(questionId: number) {
+    return this.httpClient.delete(
+      this.baseUrl + this.apiUrlEndPoint + '/' + questionId
+    );
+  }
 }
