@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <h2 class="mt-4">Available Quizzes</h2>
+  <div class="row" *ngIf="quizzes">
+    <div class="col-md-4" *ngFor="let quiz of quizzes">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="quiz-header-image"></div>
+          <mat-card-title>
+            {{ quiz.title }}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{ quiz.category.title }}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="truncateParagraph">{{ quiz.description }}</p>
+          <div>
+            <span><b>Questions:</b> {{ quiz.numberOfQuestions }}</span>
+            <span class="ms-2"><b>Max Marks:</b> {{ quiz.maxMarks }}</span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent">View</button>
+          <button mat-raised-button>Start</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

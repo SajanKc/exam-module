@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-action-list>
+    <button mat-list-item routerLink="/user-dashboard/0">
+      <mat-icon class="me-1" fontSet="material-icons-outlined">home</mat-icon>
+      Home
+    </button>
+
+    <button mat-list-item routerLink="/user-dashboard/0">
+      <mat-icon class="me-1" fontSet="material-icons-outlined">
+        category
+      </mat-icon>
+      All Quizzes
+    </button>
+
+    <div *ngFor="let category of categories" class="ps-2">
+      <button mat-list-item routerLink="/user-dashboard/{{ category.cid }}">
+        <mat-icon class="me-1" fontSet="material-icons-outlined">
+          quiz
+        </mat-icon>
+        {{ category.title }}
+      </button>
+    </div>
+
+    <button mat-list-item (click)="logout()">
+      <mat-icon class="me-1" fontSet="material-icons-outlined">logout</mat-icon>
+      Logout
+    </button>
+  </mat-action-list>
+</mat-card>

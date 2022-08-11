@@ -9,3 +9,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #fafafa !important;
 }
+.truncateParagraph {
+  display: block;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
