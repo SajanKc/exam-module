@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./update-quiz.component.css'],
 })
 export class UpdateQuizComponent implements OnInit {
-  qId: any | number;
+  quizId: any | number;
   quiz: any;
 
   categories = new Array();
@@ -25,11 +25,11 @@ export class UpdateQuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.qId = params['qId'];
+      this.quizId = params['quizId'];
     });
 
     // get quiz by id
-    this.quizService.getQuiz(this.qId).subscribe(
+    this.quizService.getQuiz(this.quizId).subscribe(
       (data: any) => {
         this.quiz = data;
         this.selectedCategory = this.quiz.category;

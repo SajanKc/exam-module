@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./view-quiz-questions.component.css'],
 })
 export class ViewQuizQuestionsComponent implements OnInit {
-  qId: any | number;
+  quizId: any | number;
   qTitle: string = '';
 
   questions: Question[] = [];
@@ -21,10 +21,10 @@ export class ViewQuizQuestionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.qId = this.activatedRoute.snapshot.params['qId'];
+    this.quizId = this.activatedRoute.snapshot.params['quizId'];
     this.qTitle = this.activatedRoute.snapshot.params['title'];
 
-    this.questionService.getQuestionsOfQuiz(this.qId).subscribe(
+    this.questionService.getQuestionsOfQuiz(this.quizId).subscribe(
       (data) => {
         this.questions = data;
       },
@@ -32,7 +32,9 @@ export class ViewQuizQuestionsComponent implements OnInit {
     );
   }
 
-  deleteQuestion(questionId: any) {
+  deleteQuestion(qId: any) {
+    console.log('Question Id: ' + qId);
+
     Swal.fire({
       icon: 'info',
       showCancelButton: true,
@@ -40,7 +42,7 @@ export class ViewQuizQuestionsComponent implements OnInit {
       title: 'Are you sure want to delete?',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.questionService.deleteQuestion(questionId).subscribe(
+        this.questionService.deleteQuestion(qId).subscribe(
           (data) => {
             Swal.fire({
               icon: 'success',

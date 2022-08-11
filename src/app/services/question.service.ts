@@ -26,9 +26,9 @@ export class QuestionService {
     );
   }
 
-  public deleteQuestion(questionId: number) {
+  public deleteQuestion(qId: number) {
     return this.httpClient.delete(
-      this.baseUrl + this.apiUrlEndPoint + '/' + questionId
+      this.baseUrl + this.apiUrlEndPoint + '/' + qId
     );
   }
 }

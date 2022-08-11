@@ -5,7 +5,7 @@
     <button
       mat-raised-button
       color="accent"
-      [routerLink]="'/admin-dashboard/add-question/' + qId + '/' + qTitle"
+      [routerLink]="'/admin-dashboard/add-question/' + quizId + '/' + qTitle"
     >
       Add Question
     </button>
@@ -52,7 +52,7 @@
         <button
           mat-raised-button
           color="warn"
-          (click)="deleteQuestion(question.qId)"
+          (click)="deleteQuestion(question.qid)"
         >
           Delete
         </button>

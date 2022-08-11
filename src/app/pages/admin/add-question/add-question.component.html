@@ -10,17 +10,15 @@
       <div class="row">
         <div class="col">
           <form (ngSubmit)="addQuestion()">
-            <mat-form-field class="w-100" appearance="outline">
-              <mat-label>Content</mat-label>
-              <textarea
-                name="content"
+            <div class="w-100 mb-4">
+              <label>Content</label>
+              <angular-editor
                 matInput
-                placeholder="Enter question description"
-                rows="5"
+                [placeholder]="'Enter text here...'"
+                name="content"
                 [(ngModel)]="question.content"
-              ></textarea>
-            </mat-form-field>
-
+              ></angular-editor>
+            </div>
             <div class="row">
               <div class="col-md-6">
                 <mat-form-field class="w-100" appearance="outline">
@@ -97,7 +95,7 @@
               </mat-select>
             </mat-form-field>
             <div class="mt-2">
-              <button mat-raised-button color="accent">Add Question</button>
+              <button mat-raised-button color="accent">Submit</button>
               <button
                 mat-raised-button
                 color="accent"

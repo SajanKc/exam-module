@@ -1,7 +1,7 @@
 import { Quiz } from './quiz.model';
 
 export class Question {
-  qId: number | undefined;
+  qid: number | undefined;
   content: string | undefined;
   image: string | undefined;
   option1: string | undefined;

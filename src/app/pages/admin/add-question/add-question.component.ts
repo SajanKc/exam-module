@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/model/question.model';
 import { QuestionService } from 'src/app/services/question.service';
 import Swal from 'sweetalert2';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-add-question',
@@ -38,6 +39,10 @@ export class AddQuestionComponent implements OnInit {
     this.qTitle = this.activatedRoute.snapshot.params['qTitle'];
     this.question.quiz['quizId'] = this.qId;
   }
+
+  // questionEditorConfig: AngularEditorConfig = {
+  //   minHeight: '100px',
+  // };
 
   addQuestion() {
     if (
