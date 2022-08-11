@@ -19,24 +19,29 @@ export class LoadQuizComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.cId = params['cId'];
+      this.loadQuiz();
     });
-
-    this.loadQuiz();
   }
 
   loadQuiz() {
     if (this.cId == 0) {
-      this.quizService.quizzes().subscribe(
+      this.quizService.getActiveQuizzes().subscribe(
         (data) => {
           this.quizzes = data;
-          console.log('Data: ', data);
         },
         (error) => {
           console.log(error);
         }
       );
     } else {
-      console.log('cId: ', this.cId);
+      this.quizService.getActiveQuizzesOfCategory(this.cId).subscribe(
+        (data) => {
+          this.quizzes = data;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
   }
 }

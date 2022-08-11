@@ -25,5 +25,13 @@
         </mat-card-actions>
       </mat-card>
     </div>
+
+    <div class="col-md-12" *ngIf="quizzes.length == 0">
+      <mat-card>
+        <mat-card-content>
+          <h2>No Quizzes Available.</h2>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>

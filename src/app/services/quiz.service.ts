@@ -18,6 +18,10 @@ export class QuizService {
     return this.http.get(`${environment.baseUrl}/quiz/${id}`);
   }
 
+  public getQuizzesOfCategory(cid: number) {
+    return this.http.get(`${environment.baseUrl}/quiz/category/${cid}`);
+  }
+
   public addQuiz(quiz: any): Observable<Quiz> {
     return this.http.post<Quiz>(`${environment.baseUrl}/quiz`, quiz);
   }
@@ -28,5 +32,13 @@ export class QuizService {
 
   public updateQuiz(quiz: any) {
     return this.http.put(`${environment.baseUrl}/quiz/` + quiz.quizId, quiz);
+  }
+
+  public getActiveQuizzes() {
+    return this.http.get(`${environment.baseUrl}/quiz/active`);
+  }
+
+  public getActiveQuizzesOfCategory(cid: number) {
+    return this.http.get(`${environment.baseUrl}/quiz/category/active/${cid}`);
   }
 }
