@@ -15,8 +15,6 @@ export class ViewQuizComponent implements OnInit {
   ngOnInit(): void {
     this.quizService.quizzes().subscribe(
       (data: any) => {
-        console.log("Data: ", data);
-        
         this.quizzes = data;
       },
       (error) => {
@@ -26,7 +24,7 @@ export class ViewQuizComponent implements OnInit {
     );
   }
 
-  deleteQuiz(qid: number) {
+  deleteQuiz(quizId: number) {
     Swal.fire({
       icon: 'info',
       title: 'Are you sure want to delete this quiz ?',
@@ -34,9 +32,9 @@ export class ViewQuizComponent implements OnInit {
       showCancelButton: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.quizService.deleteQuiz(qid).subscribe(
+        this.quizService.deleteQuiz(quizId).subscribe(
           (response) => {
-            this.quizzes = this.quizzes.filter((quiz) => quiz.qid != qid);
+            this.quizzes = this.quizzes.filter((quiz) => quiz.quizId != quizId);
             Swal.fire('Deleted !!!', 'Quiz deleted Successfully.', 'success');
           },
           (error) => {
