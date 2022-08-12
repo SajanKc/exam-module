@@ -29,7 +29,7 @@
       class="w-auto"
       mat-icon-button
       matTooltip="Profile Details"
-      routerLink="/admin-dashboard/profile"
+      (click)="navigateProfile()"
     >
       {{ currentUser }}
       <mat-icon>person_outline</mat-icon>

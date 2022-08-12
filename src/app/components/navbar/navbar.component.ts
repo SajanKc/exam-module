@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
     this.isLoggedIn = this.loginService.isLoggedIn();
     if (this.isLoggedIn)
       this.currentUser = this.loginService.getUser().username;
-      
+
     this.loginService.loginStatusSubject.asObservable().subscribe((data) => {
       this.isLoggedIn = this.loginService.isLoggedIn();
       if (this.isLoggedIn)
@@ -31,6 +31,14 @@ export class NavbarComponent implements OnInit {
 
   navigateRegister() {
     this.router.navigate(['/signup']);
+  }
+
+  navigateProfile() {
+    if (this.loginService.getUserRole() == 'ADMIN')
+      this.router.navigate(['/admin-dashboard/profile']);
+    else {
+      this.router.navigate(['/user-dashboard/profile']);
+    }
   }
 
   logout() {
