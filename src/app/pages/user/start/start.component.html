@@ -11,8 +11,10 @@
       </ng-container>
       <mat-card *ngFor="let question of questions; let i = index" class="mt-2">
         <mat-card-content>
-          <b>Q. {{ i + 1 }}) </b>
-          <span [innerHTML]="question.content"></span>
+          <p>
+            <b>Q. {{ i + 1 }}) </b>
+            <span [innerHTML]="question.content"></span>
+          </p>
           <mat-divider></mat-divider>
           <div class="row mt-4">
             <div class="col-md-6">
