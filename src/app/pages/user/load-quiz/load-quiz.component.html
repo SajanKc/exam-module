@@ -21,7 +21,12 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-raised-button color="accent">View</button>
-          <button mat-raised-button>Start</button>
+          <button
+            mat-raised-button
+            [routerLink]="'/user-dashboard/instructions/' + quiz.quizId"
+          >
+            Start
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>
