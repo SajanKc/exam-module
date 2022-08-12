@@ -4,6 +4,7 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { ViewCategoryComponent } from './pages/admin/view-category/view-category.component';
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
@@ -76,6 +77,10 @@ const routes: Routes = [
       {
         path: 'add-question/:qId/:qTitle',
         component: AddQuestionComponent,
+      },
+      {
+        path: 'update-question/:qId/:qTitle',
+        component: UpdateQuestionComponent,
       },
     ],
   },

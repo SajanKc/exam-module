@@ -41,6 +41,7 @@ import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.com
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartComponent } from './pages/user/start/start.component';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { StartComponent } from './pages/user/start/start.component';
     LoadQuizComponent,
     InstructionsComponent,
     StartComponent,
+    UpdateQuestionComponent,
   ],
   imports: [
     BrowserModule,

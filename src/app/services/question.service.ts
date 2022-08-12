@@ -25,9 +25,23 @@ export class QuestionService {
     );
   }
 
+  public getQuestionById(qId: number): Observable<any> {
+    console.log('ID S', qId);
+    return this.httpClient.get<any>(
+      this.baseUrl + this.apiUrlEndPoint + '/' + qId
+    );
+  }
+
   public addQuestionOfQuiz(question: any): Observable<any> {
     return this.httpClient.post<any>(
       this.baseUrl + this.apiUrlEndPoint,
+      question
+    );
+  }
+
+  public updateQuestion(qId: number, question: any) {
+    return this.httpClient.put(
+      this.baseUrl + this.apiUrlEndPoint + '/' + qId,
       question
     );
   }

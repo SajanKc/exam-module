@@ -5,14 +5,13 @@ import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/model/question.model';
 import { QuestionService } from 'src/app/services/question.service';
 import Swal from 'sweetalert2';
-import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
-  selector: 'app-add-question',
-  templateUrl: './add-question.component.html',
-  styleUrls: ['./add-question.component.css'],
+  selector: 'app-update-question',
+  templateUrl: './update-question.component.html',
+  styleUrls: ['./update-question.component.css'],
 })
-export class AddQuestionComponent implements OnInit {
+export class UpdateQuestionComponent implements OnInit {
   qId: number = 0;
   qTitle: string = '';
   question = {
@@ -35,12 +34,22 @@ export class AddQuestionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.qId = this.activatedRoute.snapshot.params['qId'];
-    this.qTitle = this.activatedRoute.snapshot.params['qTitle'];
-    this.question.quiz['quizId'] = this.qId;
+    this.activatedRoute.params.subscribe((params) => {
+      this.qId = params['qId'];
+      this.qTitle = params['qTitle'];
+      this.question.quiz['quizId'] = this.qId;
+    });
+
+    this.loadQuestion();
   }
 
-  addQuestion() {
+  loadQuestion() {
+    this.questionService.getQuestionById(this.qId).subscribe((data: any) => {
+      this.question = data;
+    });
+  }
+
+  updateQuestion() {
     if (
       this.question.content?.trim() === '' ||
       this.question.content === null
@@ -58,16 +67,16 @@ export class AddQuestionComponent implements OnInit {
       return;
     }
 
-    this.questionService.addQuestionOfQuiz(this.question).subscribe(
-      (data: Question) => {
-        Swal.fire('Success', 'Question added successfully', 'success').then(
+    this.questionService.updateQuestion(this.qId, this.question).subscribe(
+      (data: any) => {
+        Swal.fire('Success', 'Question updated successfully', 'success').then(
           () => {
             this.goBack();
           }
         );
       },
       (error: any) => {
-        Swal.fire('Error', 'Error adding question', 'error');
+        Swal.fire('Error', 'Error updating question', 'error');
       }
     );
   }

@@ -1,0 +1,114 @@
+<mat-card>
+  <h2>Update Question of "{{ qTitle }}"</h2>
+  <mat-card-header>
+    <mat-card-subtitle>
+      Enter the details of the question you want to add.
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card>
+      <div class="row">
+        <div class="col">
+          <form (ngSubmit)="updateQuestion()">
+            <div class="w-100 mb-4">
+              <label>Content</label>
+              <angular-editor
+                matInput
+                [placeholder]="'Enter text here...'"
+                name="content"
+                [(ngModel)]="question.content"
+              ></angular-editor>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Option 1</mat-label>
+                  <input
+                    required
+                    type="text"
+                    name="option1"
+                    matInput
+                    placeholder="Enter option 1"
+                    [(ngModel)]="question.option1"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Option 2</mat-label>
+                  <input
+                    required
+                    type="text"
+                    name="option2"
+                    matInput
+                    placeholder="Enter option 2"
+                    [(ngModel)]="question.option2"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Option 3</mat-label>
+                  <input
+                    required
+                    type="text"
+                    name="option3"
+                    matInput
+                    placeholder="Enter option 3"
+                    [(ngModel)]="question.option3"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Option 4</mat-label>
+                  <input
+                    required
+                    type="text"
+                    name="option4"
+                    matInput
+                    placeholder="Enter option 4"
+                    [(ngModel)]="question.option4"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Select Answer</mat-label>
+              <mat-select [(ngModel)]="question.answer" name="answer">
+                <mat-option *ngIf="question.option1" [value]="question.option1">
+                  {{ question.option1 }}
+                </mat-option>
+                <mat-option *ngIf="question.option2" [value]="question.option2">
+                  {{ question.option2 }}
+                </mat-option>
+                <mat-option *ngIf="question.option3" [value]="question.option3">
+                  {{ question.option3 }}
+                </mat-option>
+                <mat-option *ngIf="question.option4" [value]="question.option4">
+                  {{ question.option4 }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div class="mt-2">
+              <button mat-raised-button color="accent">Submit</button>
+              <button
+                mat-raised-button
+                color="accent"
+                class="ms-2"
+                type="button"
+                (click)="goBack()"
+              >
+                Back
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

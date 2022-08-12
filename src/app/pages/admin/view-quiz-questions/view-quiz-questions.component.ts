@@ -33,8 +33,6 @@ export class ViewQuizQuestionsComponent implements OnInit {
   }
 
   deleteQuestion(qId: any) {
-    console.log('Question Id: ' + qId);
-
     Swal.fire({
       icon: 'info',
       showCancelButton: true,
