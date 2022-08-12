@@ -40,6 +40,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartComponent } from './pages/user/start/start.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
     UserSidebarComponent,
     LoadQuizComponent,
     InstructionsComponent,
+    StartComponent,
   ],
   imports: [
     BrowserModule,

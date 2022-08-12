@@ -19,6 +19,12 @@ export class QuestionService {
     );
   }
 
+  public getActiveQuestionsOfQuiz(qid: number): Observable<Question[]> {
+    return this.httpClient.get<Question[]>(
+      this.baseUrl + this.apiUrlEndPoint + '/quiz/' + qid
+    );
+  }
+
   public addQuestionOfQuiz(question: any): Observable<any> {
     return this.httpClient.post<any>(
       this.baseUrl + this.apiUrlEndPoint,

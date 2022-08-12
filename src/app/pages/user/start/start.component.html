@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <h4>Instructions</h4>
+    </div>
+    <div class="col-md-8">
+      <ng-container *ngIf="questions">
+        <h2>
+          On Going quiz <i>{{ questions[0].quiz.title }}</i>
+        </h2>
+      </ng-container>
+      <mat-card *ngFor="let question of questions; let i = index" class="mt-2">
+        <mat-card-content>
+          <b>Q. {{ i + 1 }}) </b>
+          <span [innerHTML]="question.content"></span>
+          <mat-divider></mat-divider>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              a) <input type="radio" [value]="question.option1" [name]="i" />
+              {{ question.option1 }}
+            </div>
+            <div class="col-md-6">
+              b) <input type="radio" [value]="question.option2" [name]="i" />
+              {{ question.option2 }}
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              c) <input type="radio" [value]="question.option3" [name]="i" />
+              {{ question.option3 }}
+            </div>
+            <div class="col-md-6">
+              d) <input type="radio" [value]="question.option4" [name]="i" />
+              {{ question.option4 }}
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <div class="container text-center my-2">
+        <button mat-raised-button color="accent">Submit</button>
+      </div>
+    </div>
+    <div class="col-md-2">sdf</div>
+  </div>
+</div>

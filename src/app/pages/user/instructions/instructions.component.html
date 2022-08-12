@@ -49,7 +49,10 @@
           </mat-divider>
         </mat-card-content>
         <mat-card-actions class="text-center">
-          <button mat-raised-button color="accent">Start Quiz</button>
+          <button mat-raised-button color="accent" (click)="startQuiz()">
+            Start Quiz
+          </button>
+          <button mat-stroked-button (click)="goBack()">Back</button>
         </mat-card-actions>
       </mat-card>
     </div>

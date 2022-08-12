@@ -1,7 +1,9 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Quiz } from 'src/app/model/quiz.model';
 import { QuizService } from 'src/app/services/quiz.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-instructions',
@@ -14,7 +16,9 @@ export class InstructionsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private quizService: QuizService
+    private router: Router,
+    private quizService: QuizService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -31,5 +35,23 @@ export class InstructionsComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  startQuiz() {
+    Swal.fire({
+      title: 'Do you want to start the quiz?',
+      showCancelButton: true,
+      confirmButtonText: 'Start',
+      denyButtonText: `Don't Start`,
+      icon: 'info',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/start/' + this.quizId]);
+      }
+    });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
