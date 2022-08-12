@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
       password: [undefined, Validators.required],
       firstName: [undefined, Validators.required],
       lastName: [undefined, Validators.required],
-      gender: [undefined],
+      gender: ['male'],
       email: [
         undefined,
         Validators.compose([Validators.required, Validators.email]),
