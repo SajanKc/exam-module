@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="!isSubmit">
   <div class="row">
     <div class="col-md-2">
       <h4>Instructions</h4>
@@ -18,30 +18,84 @@
           <mat-divider></mat-divider>
           <div class="row mt-4">
             <div class="col-md-6">
-              a) <input type="radio" [value]="question.option1" [name]="i" />
+              a)
+              <input
+                type="radio"
+                [value]="question.option1"
+                [name]="i + ''"
+                [(ngModel)]="question.givenAnswer"
+              />
               {{ question.option1 }}
             </div>
             <div class="col-md-6">
-              b) <input type="radio" [value]="question.option2" [name]="i" />
+              b)
+              <input
+                type="radio"
+                [value]="question.option2"
+                [name]="i + ''"
+                [(ngModel)]="question.givenAnswer"
+              />
               {{ question.option2 }}
             </div>
           </div>
           <div class="row mt-4">
             <div class="col-md-6">
-              c) <input type="radio" [value]="question.option3" [name]="i" />
+              c)
+              <input
+                type="radio"
+                [value]="question.option3"
+                [name]="i + ''"
+                [(ngModel)]="question.givenAnswer"
+              />
               {{ question.option3 }}
             </div>
             <div class="col-md-6">
-              d) <input type="radio" [value]="question.option4" [name]="i" />
+              d)
+              <input
+                type="radio"
+                [value]="question.option4"
+                [name]="i + ''"
+                [(ngModel)]="question.givenAnswer"
+              />
               {{ question.option4 }}
             </div>
           </div>
         </mat-card-content>
       </mat-card>
       <div class="container text-center my-2">
-        <button mat-raised-button color="accent">Submit</button>
+        <button mat-raised-button color="accent" (click)="submitQuiz()">
+          Submit
+        </button>
       </div>
     </div>
     <div class="col-md-2">sdf</div>
+  </div>
+</div>
+
+<!-- showing result -->
+<div class="container-fluid text-center" *ngIf="isSubmit">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <mat-card>
+        <mat-card-header class="center">
+          <mat-card-title>Quiz Result</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="mt-2">
+          <h4><b>Total Mark: </b>{{ marksGot }}</h4>
+          <h4><b>Correct Answer: </b>{{ correctAnswers }}</h4>
+          <h4><b>Question Attempted: </b>{{ attempt }}</h4>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-raised-button
+            color="accent"
+            [routerLink]="'/user-dashboard/0'"
+          >
+            Home
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
 </div>
