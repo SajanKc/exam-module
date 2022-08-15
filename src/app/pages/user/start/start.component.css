@@ -2,3 +2,27 @@
   justify-content: center !important;
   font-size: 20px;
 }
+
+.timer_heading {
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+mat-card-subtitle.time {
+  font-size: 18px !important;
+  font-weight: bold !important;
+}
+
+.timer_spinner {
+  position: relative;
+}
+
+.timer_percentage {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateY(-50%);
+}

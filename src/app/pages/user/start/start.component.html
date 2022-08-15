@@ -1,9 +1,9 @@
 <div class="container-fluid" *ngIf="!isSubmit">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-2 order-0">
       <h4>Instructions</h4>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 order-3">
       <ng-container *ngIf="questions">
         <h2>
           On Going quiz <i>{{ questions[0].quiz.title }}</i>
@@ -68,7 +68,29 @@
         </button>
       </div>
     </div>
-    <div class="col-md-2">sdf</div>
+    <div class="col-md-2 order-2 order-md-3 mt-md-5">
+      <mat-card>
+        <mat-card-header class="timer_heading">
+          <mat-card-title> Remaining Time </mat-card-title>
+          <mat-card-subtitle class="text-center time">
+            {{ getFormattedTime() }}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="text-center">
+          <div class="timer_spinner">
+            <mat-spinner
+              mode="determinate"
+              color="accent"
+              style="margin: auto"
+              [value]="(timer / totalTime) * 100"
+            ></mat-spinner>
+            <p class="timer_percentage">
+              <b>{{ (timer / totalTime) * 100 | number: "1.0-0" }}%</b>
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>
 

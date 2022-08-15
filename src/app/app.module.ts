@@ -16,6 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -88,6 +89,7 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
     MatSnackBarModule,
     MatSlideToggleModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
     AngularEditorModule,
   ],
   providers: [authInterceptorProviders],

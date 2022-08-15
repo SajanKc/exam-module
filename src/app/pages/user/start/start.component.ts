@@ -19,6 +19,9 @@ export class StartComponent implements OnInit {
 
   isSubmit: boolean = false;
 
+  totalTime: any;
+  timer: any;
+
   constructor(
     private locationStrategy: LocationStrategy,
     private activatedRoute: ActivatedRoute,
@@ -39,9 +42,15 @@ export class StartComponent implements OnInit {
     this.questionService.getActiveQuestionsOfQuiz(this.quizId).subscribe(
       (data) => {
         this.questions = data;
+
+        // maximum 2 minutes for each question and converting to seconds
+        this.totalTime = this.questions.length * 2 * 60;
+        this.timer = this.questions.length * 2 * 60;
+
         this.questions.forEach((question: any) => {
           question['givenAnswer'] = '';
         });
+        this.startTimer();
       },
       (error) => {
         console.log(error);
@@ -58,21 +67,43 @@ export class StartComponent implements OnInit {
       icon: 'info',
     }).then((e) => {
       if (e.isConfirmed) {
-        this.isSubmit = true;
-        this.questions.forEach((question: any) => {
-          if (question.givenAnswer == question.answer) {
-            this.correctAnswers++;
-            // calculating quiz marks
-            let marks = this.questions[0].quiz.maxMarks / this.questions.length;
-            this.marksGot += marks;
-          }
-
-          if (question.givenAnswer.trim() != '') {
-            this.attempt++;
-          }
-        });
+        this.submitQuizAnswer();
       }
     });
+  }
+
+  submitQuizAnswer() {
+    this.isSubmit = true;
+    this.questions.forEach((question: any) => {
+      if (question.givenAnswer == question.answer) {
+        this.correctAnswers++;
+        // calculating quiz marks
+        let marks = this.questions[0].quiz.maxMarks / this.questions.length;
+        this.marksGot += marks;
+      }
+
+      if (question.givenAnswer.trim() != '') {
+        this.attempt++;
+      }
+    });
+  }
+
+  startTimer() {
+    let t = window.setInterval(() => {
+      if (this.timer <= 0) {
+        this.submitQuizAnswer();
+        window.clearInterval(t);
+      } else {
+        this.timer--;
+      }
+    }, 1000);
+  }
+
+  getFormattedTime() {
+    let timeString = new Date(this.timer * 1000)
+      .toISOString()
+      .replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1');
+    return timeString;
   }
 
   preventBackButton() {
