@@ -43,6 +43,7 @@ import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 import { StartComponent } from './pages/user/start/start.component';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,10 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
     MatSelectModule,
     MatProgressSpinnerModule,
     AngularEditorModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    }),
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
