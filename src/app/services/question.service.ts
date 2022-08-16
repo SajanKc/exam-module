@@ -51,4 +51,11 @@ export class QuestionService {
       this.baseUrl + this.apiUrlEndPoint + '/' + qId
     );
   }
+
+  public submitQuizAnswer(questions: any) {
+    return this.httpClient.post(
+      this.baseUrl + this.apiUrlEndPoint + '/submit-quiz',
+      questions
+    );
+  }
 }

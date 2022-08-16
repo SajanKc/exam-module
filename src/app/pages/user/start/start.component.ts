@@ -73,19 +73,32 @@ export class StartComponent implements OnInit {
   }
 
   submitQuizAnswer() {
-    this.isSubmit = true;
-    this.questions.forEach((question: any) => {
-      if (question.givenAnswer == question.answer) {
-        this.correctAnswers++;
-        // calculating quiz marks
-        let marks = this.questions[0].quiz.maxMarks / this.questions.length;
-        this.marksGot += marks;
+    // 1. Server side answer checking
+    this.questionService.submitQuizAnswer(this.questions).subscribe(
+      (data: any) => {
+        this.marksGot = data.marksGot;
+        this.correctAnswers = data.correctAnswers;
+        this.attempt = data.attempt;
+        this.isSubmit = true;
+      },
+      (error) => {
+        console.log(error);
       }
+    );
 
-      if (question.givenAnswer.trim() != '') {
-        this.attempt++;
-      }
-    });
+    // 2. Client side answer checking
+    // this.isSubmit = true;
+    // this.questions.forEach((question: any) => {
+    //   if (question.givenAnswer == question.answer) {
+    //     this.correctAnswers++;
+    //     // calculating quiz marks
+    //     let marks = this.questions[0].quiz.maxMarks / this.questions.length;
+    //     this.marksGot += marks;
+    //   }
+    //   if (question.givenAnswer.trim() != '') {
+    //     this.attempt++;
+    //   }
+    // });
   }
 
   startTimer() {
