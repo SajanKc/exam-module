@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryService } from 'src/app/services/category.service';
@@ -16,7 +17,8 @@ export class AddCategoryComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
-    private matSnack: MatSnackBar
+    private matSnack: MatSnackBar,
+    private location: Location
   ) {}
 
   ngOnInit(): void {}
@@ -42,5 +44,9 @@ export class AddCategoryComponent implements OnInit {
         Swal.fire('Error', 'Server Error !!!', 'error');
       }
     );
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

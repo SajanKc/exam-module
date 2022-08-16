@@ -26,8 +26,17 @@
                 [(ngModel)]="category.description"
               ></textarea>
             </mat-form-field>
-            <div class="mt-2">
+            <div>
               <button mat-raised-button color="accent">Add Category</button>
+              <button
+                mat-raised-button
+                color="accent"
+                class="ms-2"
+                type="button"
+                (click)="goBack()"
+              >
+                Back
+              </button>
             </div>
           </form>
         </div>

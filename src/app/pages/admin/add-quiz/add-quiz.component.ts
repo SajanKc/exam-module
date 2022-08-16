@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -28,7 +29,8 @@ export class AddQuizComponent implements OnInit {
     private router: Router,
     private categoryService: CategoryService,
     private matSnack: MatSnackBar,
-    private quizService: QuizService
+    private quizService: QuizService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -63,5 +65,9 @@ export class AddQuizComponent implements OnInit {
         Swal.fire('Error', 'Error adding quiz.', 'error');
       }
     );
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

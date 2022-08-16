@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from 'src/app/services/quiz.service';
 import Swal from 'sweetalert2';
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 export class ViewQuizComponent implements OnInit {
   quizzes = new Array();
 
-  constructor(private quizService: QuizService) {}
+  constructor(private quizService: QuizService, private location: Location) {}
 
   ngOnInit(): void {
     this.quizService.quizzes().subscribe(
@@ -43,5 +44,9 @@ export class ViewQuizComponent implements OnInit {
         );
       }
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

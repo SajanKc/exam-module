@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/services/user.service';
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UsersComponent implements OnInit {
   users: User[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private location: Location) {}
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe((data: User[]) => {
@@ -18,5 +19,9 @@ export class UsersComponent implements OnInit {
       console.log('Users: ', this.users);
       console.log('Users D: ', data);
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

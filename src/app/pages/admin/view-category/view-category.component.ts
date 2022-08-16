@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from 'src/app/services/category.service';
 import Swal from 'sweetalert2';
@@ -10,7 +11,10 @@ import Swal from 'sweetalert2';
 export class ViewCategoryComponent implements OnInit {
   categories = new Array();
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(
+    private categoryService: CategoryService,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.categoryService.categories().subscribe(
@@ -22,5 +26,9 @@ export class ViewCategoryComponent implements OnInit {
         Swal.fire('Error', 'Error in loading data', 'error');
       }
     );
+  }
+
+  goBack() {
+    this.location.back();
   }
 }

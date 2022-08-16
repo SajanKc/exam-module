@@ -24,7 +24,9 @@
         <tbody>
           <tr *ngIf="user.username">
             <th>Username :</th>
-            <td><i>{{ user.username }}</i></td>
+            <td>
+              <i>{{ user.username }}</i>
+            </td>
           </tr>
           <tr *ngIf="user.firstName">
             <th>Name :</th>
@@ -51,6 +53,15 @@
 
       <mat-card-actions>
         <button mat-raised-button color="accent" disabled>Update</button>
+        <button
+          mat-raised-button
+          color="accent"
+          class="ms-2"
+          type="button"
+          (click)="goBack()"
+        >
+          Back
+        </button>
       </mat-card-actions>
     </mat-card>
   </mat-card-content>

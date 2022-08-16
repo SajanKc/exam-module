@@ -1,5 +1,18 @@
 <mat-card *ngIf="users">
-  <h2>Users Details</h2>
+  <div class="d-flex justify-content-between">
+    <h2>Users Details</h2>
+    <div>
+      <button
+        mat-raised-button
+        color="accent"
+        class="ms-2"
+        type="button"
+        (click)="goBack()"
+      >
+        Back
+      </button>
+    </div>
+  </div>
   <mat-card-content>
     <mat-card>
       <div class="table-responsive">
