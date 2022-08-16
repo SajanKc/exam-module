@@ -17,6 +17,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatBadgeModule } from '@angular/material/badge';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SignupComponent } from './pages/signup/signup.component';
@@ -93,6 +94,7 @@ import { UsersComponent } from './pages/admin/users/users.component';
     MatSlideToggleModule,
     MatSelectModule,
     MatProgressSpinnerModule,
+    MatBadgeModule,
     AngularEditorModule,
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({

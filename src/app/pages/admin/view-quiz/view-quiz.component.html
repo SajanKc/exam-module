@@ -14,8 +14,27 @@
     </div>
   </div>
   <mat-card-content>
-    <mat-card class="mb-2" *ngFor="let quiz of quizzes">
-      <mat-card-header>
+    <mat-card
+      class="mb-2"
+      *ngFor="let quiz of quizzes"
+      ngClass="{{ quiz.active ? 'bg-light' : 'bg-white' }}"
+    >
+      <mat-card-header
+        *ngIf="quiz.active"
+        matBadge="A"
+        matBadgePosition="before"
+        matBadgeColor="accent"
+      >
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>{{ quiz.title }}</mat-card-title>
+        <mat-card-subtitle> {{ quiz.category.title }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-header
+        *ngIf="!quiz.active"
+        matBadge="I"
+        matBadgePosition="before"
+        matBadgeColor="primary"
+      >
         <div mat-card-avatar class="header-image"></div>
         <mat-card-title>{{ quiz.title }}</mat-card-title>
         <mat-card-subtitle> {{ quiz.category.title }}</mat-card-subtitle>
@@ -40,17 +59,20 @@
         >
           Update
         </button>
-        <button mat-raised-button color="accent">Attempts</button>
-        <button mat-stroked-button color="accent">
-          Max Marks: {{ quiz.maxMarks }}
-        </button>
-        <button mat-stroked-button color="accent">
-          Questions: {{ quiz.numberOfQuestions }}
-        </button>
-        <button mat-stroked-button color="warn" (click)="deleteQuiz(quiz.quizId)">
+        <button
+          mat-stroked-button
+          color="warn"
+          (click)="deleteQuiz(quiz.quizId)"
+        >
           <mat-icon class="me-1" fontSet="material-icons-outlined">
             delete_forever
           </mat-icon>
+        </button>
+        <button mat-stroked-button color="accent" disabled>
+          Max Marks: {{ quiz.maxMarks }}
+        </button>
+        <button mat-stroked-button color="accent" disabled>
+          Questions: {{ quiz.numberOfQuestions }}
         </button>
       </mat-card-actions>
     </mat-card>
