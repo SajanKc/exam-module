@@ -1,12 +1,21 @@
 <div class="container-fluid" *ngIf="!isSubmit">
   <div class="row">
-    <div class="col-md-2 order-0">
-      <h4>Instructions</h4>
+    <div class="col-md-2 order-0 mt-md-5">
+      <mat-card>
+        <mat-card-content>
+          <mat-card-title>Instructions</mat-card-title>
+          <ul class="list-group list-group-numbered">
+            <li class="list-group-item list-group-item-warning">Do not refresh the page.</li>
+            <li class="list-group-item list-group-item-warning">Do not switch the tabs.</li>
+            <li class="list-group-item list-group-item-warning">Do not minimize the window.</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
     </div>
     <div class="col-md-8 order-3">
       <ng-container *ngIf="questions">
         <h2>
-          On Going quiz <i>{{ questions[0].quiz.title }}</i>
+          On Going quiz: <i>"{{ questions[0].quiz.title }}"</i>
         </h2>
       </ng-container>
       <mat-card *ngFor="let question of questions; let i = index" class="mt-2">
@@ -62,7 +71,7 @@
           </div>
         </mat-card-content>
       </mat-card>
-      <div class="container text-center my-2">
+      <div class="my-2">
         <button mat-raised-button color="accent" (click)="submitQuiz()">
           Submit
         </button>
