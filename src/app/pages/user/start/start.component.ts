@@ -113,10 +113,21 @@ export class StartComponent implements OnInit {
   }
 
   getFormattedTime() {
-    let timeString = new Date(this.timer * 1000)
-      .toISOString()
-      .replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1');
-    return timeString;
+    let duration = new Date(this.timer * 1000).getTime();
+
+    let milliseconds = Math.floor((duration % 1000) / 100),
+      seconds: any = Math.floor((duration / 1000) % 60),
+      minutes: any = Math.floor((duration / (1000 * 60)) % 60),
+      hours: any = Math.floor((duration / (1000 * 60 * 60)) % 24);
+
+    hours = hours < 10 ? '0' + hours : hours;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    if (hours == '00') {
+      return minutes + 'm : ' + seconds + 's';
+    } else {
+      return hours + 'h : ' + minutes + 'm : ' + seconds + 's';
+    }
   }
 
   preventBackButton() {
