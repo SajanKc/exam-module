@@ -22,6 +22,10 @@
       />
       <table class="table table-hover">
         <tbody>
+          <tr *ngIf="user.username">
+            <th>Username :</th>
+            <td><i>{{ user.username }}</i></td>
+          </tr>
           <tr *ngIf="user.firstName">
             <th>Name :</th>
             <td>{{ user.firstName }} {{ user.lastName }}</td>
@@ -46,8 +50,7 @@
       </table>
 
       <mat-card-actions>
-        <button mat-raised-button color="primary">Update</button>
-        <button mat-raised-button color="accent">SHARE</button>
+        <button mat-raised-button color="accent" disabled>Update</button>
       </mat-card-actions>
     </mat-card>
   </mat-card-content>
