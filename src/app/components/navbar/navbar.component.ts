@@ -41,6 +41,14 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  navigateHome() {
+    if (this.loginService.getUserRole() == 'ADMIN')
+      this.router.navigate(['/admin-dashboard']);
+    else {
+      this.router.navigate(['/user-dashboard/0']);
+    }
+  }
+
   logout() {
     this.loginService.logout();
     this.isLoggedIn = false;
