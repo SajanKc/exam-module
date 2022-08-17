@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -21,12 +22,14 @@ export class UpdateUserComponent implements OnInit {
   };
 
   id: number = 0;
+  userRole: string = '';
 
   constructor(
     private userService: UserService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +49,9 @@ export class UpdateUserComponent implements OnInit {
         this.user.gender = data.gender;
         this.user.email = data.email;
         this.user.phone = data.phone;
+
+        //setting user role
+        this.userRole = data.authorities[0].authority;
       },
       (error) => {
         console.log(error);
@@ -58,7 +64,8 @@ export class UpdateUserComponent implements OnInit {
       (data) => {
         Swal.fire('Updated !', 'User updated successfully', 'success').then(
           (e) => {
-            this.router.navigate(['admin-dashboard/users']);
+            if (this.userRole === 'ADMIN') this.loginService.logout();
+            else this.router.navigate(['admin-dashboard/users']);
           }
         );
       },
