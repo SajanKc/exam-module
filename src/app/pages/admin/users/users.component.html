@@ -26,6 +26,7 @@
               <th>Phone</th>
               <th>Status</th>
               <th>Role</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -37,6 +38,25 @@
               <td>{{ user.phone }}</td>
               <td>{{ user.authorities[0].authority }}</td>
               <td>{{ user.enabled ? "ACTIVE" : "NOT_ACTIVE" }}</td>
+              <td>
+                <button
+                  mat-raised-button
+                  class="me-md-2"
+                  color="primary"
+                  type="button"
+                  (click)="editUser(user)"
+                >
+                  Edit
+                </button>
+                <button
+                  mat-raised-button
+                  color="warn"
+                  type="button"
+                  (click)="deleteUser(user.id)"
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

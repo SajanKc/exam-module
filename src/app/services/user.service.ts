@@ -25,4 +25,10 @@ export class UserService {
       this.baseUrl.concat(this.apiUrlEndPoint)
     );
   }
+
+  deleteUser(id: number) {
+    return this.httpClient.delete(
+      this.baseUrl.concat(this.apiUrlEndPoint) + '/' + id
+    );
+  }
 }
