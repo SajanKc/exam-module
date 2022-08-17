@@ -8,6 +8,7 @@
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Username</mat-label>
             <input
+              [disabled]="userRole === 'ADMIN'"
               name="username"
               [(ngModel)]="user.username"
               type="text"

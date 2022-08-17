@@ -24,8 +24,8 @@
               <th>Name</th>
               <th>Email</th>
               <th>Phone</th>
-              <th>Status</th>
               <th>Role</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -49,6 +49,7 @@
                   Update
                 </button>
                 <button
+                  *ngIf="user.authorities[0].authority !== 'ADMIN'"
                   mat-raised-button
                   color="warn"
                   type="button"
