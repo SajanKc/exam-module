@@ -46,6 +46,7 @@ import { StartComponent } from './pages/user/start/start.component';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { UsersComponent } from './pages/admin/users/users.component';
+import { UpdateUserComponent } from './pages/admin/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { UsersComponent } from './pages/admin/users/users.component';
     StartComponent,
     UpdateQuestionComponent,
     UsersComponent,
+    UpdateUserComponent,
   ],
   imports: [
     BrowserModule,

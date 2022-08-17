@@ -45,7 +45,7 @@ export class ViewQuizQuestionsComponent implements OnInit {
             Swal.fire({
               icon: 'success',
               title: 'Deleted!',
-              text: 'Your file has been deleted.',
+              text: 'Question has been deleted successfully.',
             });
             this.ngOnInit();
           },

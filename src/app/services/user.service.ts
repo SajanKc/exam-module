@@ -26,6 +26,19 @@ export class UserService {
     );
   }
 
+  getUserById(id: number): Observable<any> {
+    return this.httpClient.get<any>(
+      this.baseUrl.concat(this.apiUrlEndPoint) + '/id/' + id
+    );
+  }
+
+  updateUser(user: any): Observable<any> {
+    return this.httpClient.put<any>(
+      this.baseUrl.concat(this.apiUrlEndPoint),
+      user
+    );
+  }
+
   deleteUser(id: number) {
     return this.httpClient.delete(
       this.baseUrl.concat(this.apiUrlEndPoint) + '/' + id

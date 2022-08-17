@@ -1,8 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/model/user.model';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { UpdateUserComponent } from '../update-user/update-user.component';
 
 @Component({
   selector: 'app-users',
@@ -23,8 +25,6 @@ export class UsersComponent implements OnInit {
   goBack() {
     this.location.back();
   }
-
-  editUser(user: User) {}
 
   deleteUser(id: any) {
     Swal.fire({

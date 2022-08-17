@@ -26,7 +26,6 @@ export class QuestionService {
   }
 
   public getQuestionById(qId: number): Observable<any> {
-    console.log('ID S', qId);
     return this.httpClient.get<any>(
       this.baseUrl + this.apiUrlEndPoint + '/' + qId
     );
